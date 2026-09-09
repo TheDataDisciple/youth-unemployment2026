@@ -1,0 +1,45 @@
+table YouthUnemployment
+	lineageTag: e0a65c67-d4d2-4068-9ff1-690795079e80
+
+	column Region
+		dataType: string
+		lineageTag: 45039042-6527-4792-bacd-c3ebd3dfab2c
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnemploymentRate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b2f2fe09-1ec0-4c3c-8f47-3c74551f056d
+		summarizeBy: sum
+		sourceColumn: UnemploymentRate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnemployedPeople
+		dataType: int64
+		formatString: 0
+		lineageTag: 8690f80a-fb0c-41a0-ac7a-2117452ce21d
+		summarizeBy: sum
+		sourceColumn: UnemployedPeople
+
+		annotation SummarizationSetBy = Automatic
+
+	partition YouthUnemployment = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents("C:\Users\Klymchuk Dmytriy\Documents\ChatGPT\Пост в LinkedIn\youth-unemployment2026\data\youth-unemployment.xlsx"), null, true),
+				  #"Navigation 1" = Source{[Item = "YouthUnemployment", Kind = "Table"]}[Data],
+				  #"Changed column type" = Table.TransformColumnTypes(#"Navigation 1", {{"Region", type text}, {"Year", Int64.Type}, {"AgeGroup", type text}, {"UnemploymentRate", type number}, {"UnemployedPeople", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed column type",{"Year", "AgeGroup"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"UnemploymentRate", Percentage.Type}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "youth-unemployment-dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "224aa014-9f56-4478-93c2-7ff31ae8b3f2"
+  }
+}
