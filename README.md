@@ -82,10 +82,14 @@ Suggested chart title: **Youth unemployment: a difficult first step**.
 
 ## Repository contents
 
+The accompanying English LinkedIn post is available as a [Word document](docs/linkedin-post.docx).
+
 ```text
 README.md
 LICENSE
 .gitignore
+docs/
+  linkedin-post.docx
 data/
   youth-unemployment.xlsx
   youth-unemployment-dashboard.pbip
