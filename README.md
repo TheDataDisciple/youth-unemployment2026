@@ -87,6 +87,8 @@ The accompanying English LinkedIn post is available as a [Word document](docs/li
 ```text
 README.md
 LICENSE
+LICENSE-CC-BY-4.0
+THIRD_PARTY_NOTICES.md
 .gitignore
 docs/
   linkedin-post.docx
@@ -101,4 +103,21 @@ The `.Report` folder holds page layouts, visuals and themes. The `.SemanticModel
 
 ## License and attribution
 
-This repository includes an [MIT License](LICENSE). ILO source material remains subject to its own applicable terms. Cite the ILO report when using or sharing the data. This is an independent project and is not affiliated with or endorsed by the ILO.
+Copyright (c) 2026 Dmytro Klymchuk (TheDataDisciple), for original contributions to the extent copyright applies.
+
+This project uses different licenses for different types of material. The presence of the root `LICENSE` file does not place all repository content under MIT.
+
+| Material | License and scope |
+| --- | --- |
+| Original software and model logic, including Power Query M, any DAX, `.tmdl` model definitions, and project configuration | [MIT](LICENSE) |
+| Original prose in `README.md` and `docs/linkedin-post.docx` | [CC BY 4.0](LICENSE-CC-BY-4.0), excluding quoted and third-party material |
+| Original visual design, chart labels and narrative content in the Power BI report, and original workbook presentation in `data/youth-unemployment.xlsx` | [CC BY 4.0](LICENSE-CC-BY-4.0), only to the extent of the author's rights |
+| ILO data, the NLT Scripture quotation, and bundled Microsoft themes | Their respective third-party terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) |
+
+For mixed report-definition files, MIT covers original software/configuration portions; CC BY 4.0 covers original expressive design and prose. Neither license grants rights to third-party components. Original source-code examples embedded in documentation remain under MIT.
+
+CC BY 4.0 allows sharing and adaptation, including commercial use, with appropriate attribution, a license link and an indication of changes. Attribute original text and design to **Dmytro Klymchuk (TheDataDisciple)** and link to [this repository](https://github.com/TheDataDisciple/youth-unemployment2026). Attribute the statistical source separately to the **International Labour Organization**. The full license governs; this summary adds no restrictions.
+
+Third-party exclusions apply wherever those materials appear, including inside DOCX, XLSX and report files. Carry the relevant notices with redistributed copies. No rights are claimed over facts or other material that is not subject to applicable copyright or database rights.
+
+This clarification does not withdraw permissions already granted for earlier versions. This is an independent project and is not affiliated with or endorsed by the ILO, Tyndale or Microsoft.
