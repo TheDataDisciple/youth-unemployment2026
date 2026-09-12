@@ -2,7 +2,7 @@
 
 An exploration of youth unemployment using **2025 estimates published by the International Labour Organization (ILO) in August 2026**, with an Excel dataset and a Power BI Desktop project.
 
-The project focuses on the challenges young people face when entering the labour market. **2026 in the repository name refers to the report's publication year, not the year measured by the dataset.**
+The project focuses on the challenges young people face when entering the labour market. **2025 in the repository name is the year measured; 2026 is the ILO report's publication year.**
 
 ## Chart preview
 
@@ -126,7 +126,7 @@ This project uses different licenses for different types of material. The presen
 
 For mixed report-definition files, MIT covers original software/configuration portions; CC BY 4.0 covers original expressive design and prose. Neither license grants rights to third-party components. Original source-code examples embedded in documentation remain under MIT.
 
-CC BY 4.0 allows sharing and adaptation, including commercial use, with appropriate attribution, a license link and an indication of changes. Attribute original text and design to **Dmytro Klymchuk (TheDataDisciple)** and link to [this repository](https://github.com/TheDataDisciple/youth-unemployment2026). Attribute the statistical source separately to the **International Labour Organization**. The full license governs; this summary adds no restrictions.
+CC BY 4.0 allows sharing and adaptation, including commercial use, with appropriate attribution, a license link and an indication of changes. Attribute original text and design to **Dmytro Klymchuk (TheDataDisciple)** and link to [this repository](https://github.com/TheDataDisciple/youth-unemployment2025). Attribute the statistical source separately to the **International Labour Organization**. The full license governs; this summary adds no restrictions.
 
 Third-party exclusions apply wherever those materials appear, including inside DOCX, XLSX and report files. Carry the relevant notices with redistributed copies. No rights are claimed over facts or other material that is not subject to applicable copyright or database rights.
 
