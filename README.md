@@ -78,7 +78,7 @@ The `Data` query imports the `Data` worksheet, assigns column types, removes `Ye
 
 ## Repository contents
 
-The accompanying English LinkedIn post is available as a [Word document](docs/linkedin-post.docx).
+Read the [published LinkedIn post](https://www.linkedin.com/posts/thedatadisciple_you-need-experience-to-get-a-job-but-how-activity-7504525000364838915-5rXB) and join the discussion. The accompanying English text is also available as a [Word document](docs/linkedin-post.docx).
 
 ```text
 README.md
