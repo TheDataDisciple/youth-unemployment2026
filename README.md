@@ -59,19 +59,6 @@ The workbook is a manually transcribed, three-row extract from the ILO release, 
 
 The `Data` query imports the `Data` worksheet, assigns column types, removes `Year` and `AgeGroup`, and adds `IdRegion` to preserve the region order. It shortens the European label to `North, South & West Europe`. Full region names, year and age group remain in Excel; all current observations refer to 2025 and ages 15–24.
 
-## Build an alternative chart from Excel
-
-1. Open Power BI Desktop and connect to the Excel workbook.
-2. Select the named table `YouthUnemployment3` to import only the defined source records.
-3. Check the column types against the data dictionary above. Format `UnemploymentRate` as a percentage with one decimal place.
-4. Create a horizontal bar chart with `Region` as the category and `UnemploymentRate` as the value. With one row per region, `Max` returns the supplied rate without adding rates together.
-5. Start the value axis at zero and show data labels. State **2025 estimates, ages 15–24** in the title or subtitle.
-6. Optionally add a card for `UnemployedPeople`, filtered to `Region = World`, to display approximately 67 million.
-
-For connection instructions, see [Microsoft's documentation on connecting to Excel in Power BI Desktop](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-connect-excel).
-
-For reuse outside this repository, include the ILO source credit and specify that the figures are 2025 estimates published in 2026.
-
 ## Methodology and limitations
 
 - The unemployment rate uses the youth labour force as its denominator, not all people aged 15–24.
