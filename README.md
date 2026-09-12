@@ -4,15 +4,19 @@ An exploration of youth unemployment using **2025 estimates published by the Int
 
 The project focuses on the challenges young people face when entering the labour market. **2026 in the repository name refers to the report's publication year, not the year measured by the dataset.**
 
+## Chart preview
+
+![Youth unemployment rates in 2025: World 12.4%, Northern America 9.8%, and Northern, Southern and Western Europe 15.0%. Ages 15–24; share of the youth labour force.](data/data-plot.png)
+
+**Source:** [International Labour Organization, August 2026](https://www.ilo.org/resource/news/youth-unemployment-rises-young-people-face-harder-road-decent-work). Estimates for 2025. The chart label **North, South & West Europe** abbreviates **Northern, Southern and Western Europe**.
+
+[Download the chart PNG](data/data-plot.png) · [Excel dataset](data/youth-unemployment.xlsx) · [LinkedIn post (Word)](docs/linkedin-post.docx)
+
 ## Project status
 
-The Excel dataset, Power BI report definitions and semantic model are available. The `Dashboard` page contains:
+The final chart image, Excel dataset and editable Power BI Project (`.pbip`) are included. The `Dashboard` page contains one horizontal bar chart comparing all three observations and a card showing the worldwide unemployed youth count. The PNG exports the rate chart only; the count card is available in the editable report.
 
-- A bar chart for the world youth unemployment rate.
-- A bar chart comparing Northern America with Northern, Southern and Western Europe.
-- A card showing the number of unemployed young people worldwide.
-
-The editable report is supplied as a Power BI Project (`.pbip`). No chart image or published Power BI Service link is included yet.
+This is a static analysis of selected 2025 estimates. No public Power BI Service report is linked.
 
 ## Data snapshot
 
@@ -28,7 +32,12 @@ The ILO also reports approximately **67 million unemployed young people worldwid
 
 ## Dataset
 
-Download [youth-unemployment.xlsx](data/youth-unemployment.xlsx). The Power BI model imports the named Excel table **`YouthUnemployment`** on the `Data` worksheet. Source notes sit outside that table. The workbook also contains a copy on the `Table` worksheet, named `YouthUnemployment3`; the report does not import that copy. Edit `YouthUnemployment` on `Data` when updating the report's source.
+Download [youth-unemployment.xlsx](data/youth-unemployment.xlsx). The workbook contains:
+
+- `Data`: the three source observations in the named table `YouthUnemployment3` (`A1:E4`). Edit this sheet when updating the source data.
+- `PivotSheet`: a supporting pivot view, not the report's import source.
+
+The supplied Power BI query currently imports the entire `Data` worksheet and promotes its first row to headers. Keep this worksheet limited to the header and source records; place notes and totals elsewhere.
 
 | Field | Data type | Meaning |
 | --- | --- | --- |
@@ -44,16 +53,16 @@ The workbook is a manually transcribed, three-row extract from the ILO release, 
 
 1. Clone or download the **entire repository**. Keep the `.Report` and `.SemanticModel` folders alongside the `.pbip` file in `data`.
 2. Open [youth-unemployment-dashboard.pbip](data/youth-unemployment-dashboard.pbip) in a compatible version of Power BI Desktop. See [Microsoft's Power BI Project documentation](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview) for requirements and preview settings.
-3. Before refreshing on another computer, update the Excel source path. The `YouthUnemployment` Power Query currently uses the author's absolute local file path. In Power Query, edit the query's `Source` step so `File.Contents(...)` points to your local `data/youth-unemployment.xlsx`.
+3. Before refreshing on another computer, update the Excel source path. The `Data` Power Query currently uses the author's absolute local file path. In Power Query, edit the query's `Source` step so `File.Contents(...)` points to your local `data/youth-unemployment.xlsx`.
 4. Apply the query changes and refresh to load the data. The local model cache is excluded from Git, so a fresh clone needs a successful refresh.
 5. Open the `Dashboard` page to view or edit the visuals.
 
-The query imports `YouthUnemployment`, assigns column types, then removes `Year` and `AgeGroup` from the semantic model. Both fields remain in Excel; all current observations refer to 2025 and ages 15–24.
+The `Data` query imports the `Data` worksheet, assigns column types, removes `Year` and `AgeGroup`, and adds `IdRegion` to preserve the region order. It shortens the European label to `North, South & West Europe`. Full region names, year and age group remain in Excel; all current observations refer to 2025 and ages 15–24.
 
 ## Build an alternative chart from Excel
 
 1. Open Power BI Desktop and connect to the Excel workbook.
-2. Select the named table `YouthUnemployment`, rather than the entire worksheet, to exclude the source notes.
+2. Select the named table `YouthUnemployment3` to import only the defined source records.
 3. Check the column types against the data dictionary above. Format `UnemploymentRate` as a percentage with one decimal place.
 4. Create a horizontal bar chart with `Region` as the category and `UnemploymentRate` as the value. With one row per region, `Max` returns the supplied rate without adding rates together.
 5. Start the value axis at zero and show data labels. State **2025 estimates, ages 15–24** in the title or subtitle.
@@ -61,7 +70,7 @@ The query imports `YouthUnemployment`, assigns column types, then removes `Year`
 
 For connection instructions, see [Microsoft's documentation on connecting to Excel in Power BI Desktop](https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-connect-excel).
 
-Suggested chart title: **Youth unemployment: a difficult first step**.
+For reuse outside this repository, include the ILO source credit and specify that the figures are 2025 estimates published in 2026.
 
 ## Methodology and limitations
 
@@ -71,7 +80,7 @@ Suggested chart title: **Youth unemployment: a difficult first step**.
 - The dataset compares selected regions for one year. It cannot show a time trend or establish the causes of unemployment.
 - Youth unemployment does not directly measure employers' experience requirements or the outcomes of all first-time job applicants.
 - The source contains rounded estimates. The workbook has no automatic refresh connection.
-- The supplied bar charts use `Sum` of `UnemploymentRate` within each region. This returns the supplied values only because the current dataset has one row per region. Revisit the aggregation and restore year/age fields in the model before adding observations.
+- The supplied bar chart uses `Sum` of `UnemploymentRate` within each region. This returns the supplied values only because the current dataset has one row per region. Revisit the aggregation and restore year/age fields in the model before adding observations.
 - Selecting a regional bar can filter other visuals. Regional unemployed-person counts are blank, so the count card may become blank under a regional selection; clear the selection to return to the world total.
 
 ## Sources
@@ -94,12 +103,13 @@ docs/
   linkedin-post.docx
 data/
   youth-unemployment.xlsx
+  data-plot.png
   youth-unemployment-dashboard.pbip
   youth-unemployment-dashboard.Report/
   youth-unemployment-dashboard.SemanticModel/
 ```
 
-The `.Report` folder holds page layouts, visuals and themes. The `.SemanticModel` folder holds the model and Power Query definition. `.gitignore` excludes Power BI's local settings and cached data.
+The `.Report` folder holds page layouts, visuals and themes. The `.SemanticModel` folder holds the model and Power Query definition. `.gitignore` excludes Power BI's local settings, cached data and the unpublished `local-review` working copy.
 
 ## License and attribution
 
@@ -111,7 +121,7 @@ This project uses different licenses for different types of material. The presen
 | --- | --- |
 | Original software and model logic, including Power Query M, any DAX, `.tmdl` model definitions, and project configuration | [MIT](LICENSE) |
 | Original prose in `README.md` and `docs/linkedin-post.docx` | [CC BY 4.0](LICENSE-CC-BY-4.0), excluding quoted and third-party material |
-| Original visual design, chart labels and narrative content in the Power BI report, and original workbook presentation in `data/youth-unemployment.xlsx` | [CC BY 4.0](LICENSE-CC-BY-4.0), only to the extent of the author's rights |
+| Original visual design, chart labels and narrative content in the Power BI report and `data/data-plot.png`, and original workbook presentation in `data/youth-unemployment.xlsx` | [CC BY 4.0](LICENSE-CC-BY-4.0), only to the extent of the author's rights |
 | ILO data, the NLT Scripture quotation, and bundled Microsoft themes | Their respective third-party terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) |
 
 For mixed report-definition files, MIT covers original software/configuration portions; CC BY 4.0 covers original expressive design and prose. Neither license grants rights to third-party components. Original source-code examples embedded in documentation remain under MIT.

@@ -9,11 +9,11 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["YouthUnemployment"]
+annotation PBI_QueryOrder = ["Data"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table YouthUnemployment
+ref table Data
 
 ref cultureInfo en-US
 
